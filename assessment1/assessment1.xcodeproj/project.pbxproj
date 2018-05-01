@@ -128,8 +128,6 @@
 				84E850C12097E3C100139647 /* Model */,
 				84E850C02097E3B500139647 /* Service */,
 				84E850992097CE9700139647 /* AppDelegate.swift */,
-				84E8509B2097CE9700139647 /* TopicListViewController.swift */,
-				84E8509D2097CE9700139647 /* TopicDetailViewController.swift */,
 				84E8509F2097CE9700139647 /* Main.storyboard */,
 				84E850A22097CE9700139647 /* Assets.xcassets */,
 				84E850A42097CE9700139647 /* LaunchScreen.storyboard */,
@@ -174,6 +172,8 @@
 		84E850C32097E3D600139647 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				84E8509B2097CE9700139647 /* TopicListViewController.swift */,
+				84E8509D2097CE9700139647 /* TopicDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

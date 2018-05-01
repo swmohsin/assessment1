@@ -11,6 +11,7 @@ import UIKit
 struct TopicListCellViewModel {
     let titleText: String?
     let iconURL: URL?
+    let link:URL?
 }
 
 class TopicListViewModel {
@@ -60,7 +61,14 @@ class TopicListViewModel {
                 } else if let name = topic.name {
                     titleText = name
                 }
-                viewModels.append( TopicListCellViewModel(titleText: titleText, iconURL: iconURL))
+                var linkURL:URL?
+                if let link = topic.url {
+                    linkURL = URL(string: link)
+                } else {
+                    let urlEncoded = titleText?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+                    linkURL = URL(string: "https://duckduckgo.com/?q=\(urlEncoded!)")
+                }
+                viewModels.append( TopicListCellViewModel(titleText: titleText, iconURL: iconURL, link: linkURL))
             }
             self.cellViewModels = viewModels
         }) { (error) in

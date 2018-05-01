@@ -50,12 +50,26 @@ class TopicListViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let cellModel  = viewModel.getCellViewModel(at: indexPath)
                 let controller = (segue.destination as! UINavigationController).topViewController as! TopicDetailViewController
-                //controller.detailItem = object
+                controller.link = cellModel.link
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
         }
     }
+    
+//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+//        if let indexPath = tableView.indexPathForSelectedRow {
+//            let cellModel = viewModel.getCellViewModel(at: indexPath)
+//            if let _ = cellModel.link {
+//                return true
+//            }
+//        }
+//        let alert = UIAlertController(title: "No link found for this item", message: nil, preferredStyle: .alert)
+//        let dismiss = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+//        alert.addAction(dismiss)
+//        present(alert, animated: true, completion: nil)
+//        return false
+//    }
 
     // MARK: - Table View
 
