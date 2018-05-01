@@ -92,6 +92,7 @@
                                         <constraint firstItem="Jij-0y-v43" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="top" id="4nm-Wd-sEG"/>
                                         <constraint firstItem="391-Ky-k3a" firstAttribute="centerY" secondItem="37f-cq-3Eg" secondAttribute="centerY" id="5S5-Mr-pos"/>
                                         <constraint firstAttribute="trailing" secondItem="391-Ky-k3a" secondAttribute="trailing" constant="5" id="SLa-dJ-WeF"/>
+                                        <constraint firstAttribute="bottom" secondItem="Jij-0y-v43" secondAttribute="bottom" constant="3.5" id="SbG-qi-1TY"/>
                                         <constraint firstItem="391-Ky-k3a" firstAttribute="leading" secondItem="Jij-0y-v43" secondAttribute="trailing" constant="5" id="Vxa-6K-BR8"/>
                                     </constraints>
                                 </tableViewCellContentView>

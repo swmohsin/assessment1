@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import MBProgressHUD
 
 class TopicListViewController: UITableViewController {
 
@@ -23,6 +24,18 @@ class TopicListViewController: UITableViewController {
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? TopicDetailViewController
+        }
+        
+        viewModel.updateLoadingStatus = {
+            if self.viewModel.isLoading {
+                DispatchQueue.main.async {
+                    MBProgressHUD.showAdded(to: self.view, animated: true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+            }
         }
         
         viewModel.reloadTableViewClosure = {
@@ -57,20 +70,6 @@ class TopicListViewController: UITableViewController {
         }
     }
     
-//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-//        if let indexPath = tableView.indexPathForSelectedRow {
-//            let cellModel = viewModel.getCellViewModel(at: indexPath)
-//            if let _ = cellModel.link {
-//                return true
-//            }
-//        }
-//        let alert = UIAlertController(title: "No link found for this item", message: nil, preferredStyle: .alert)
-//        let dismiss = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
-//        alert.addAction(dismiss)
-//        present(alert, animated: true, completion: nil)
-//        return false
-//    }
-
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,10 +84,11 @@ class TopicListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as! TopicCell
         let cellViewModel = viewModel.getCellViewModel( at: indexPath )
         cell.lblTitle.text = cellViewModel.titleText
+        let img = UIImage(imageLiteralResourceName: "image-not-available.jpg")
         if let iconURL = cellViewModel.iconURL {
-            cell.imgView.sd_setImage(with: iconURL, placeholderImage: nil)
+            cell.imgView.sd_setImage(with: iconURL, placeholderImage:img)
         } else {
-            cell.imgView?.image = nil
+            cell.imgView?.image = img
         }
         return cell
     }

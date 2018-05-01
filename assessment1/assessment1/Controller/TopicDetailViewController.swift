@@ -20,6 +20,9 @@ class TopicDetailViewController: UIViewController, WKNavigationDelegate {
         webView = WKWebView(frame: view.frame)
         view.addSubview(webView!)
         webView!.navigationDelegate = self
+        if link == nil {
+            link = URL(string:"https://duckduckgo.com")
+        }
         load()
     }
     
